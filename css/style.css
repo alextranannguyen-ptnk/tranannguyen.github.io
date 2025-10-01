@@ -1,0 +1,350 @@
+@font-face {
+    font-family: 'Gulfs Display';
+    src: url('../fonts/GulfsDisplay-Normal.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+@font-face {
+  font-family: 'Peace Sans';
+  src: url('../fonts/Peace Sans.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Fredoka';
+  src: url('../fonts/Fredoka-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Fredoka';
+  src: url('../fonts/Fredoka-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+  body {
+    margin: 0;
+    font-family: 'Peace Sans', sans-serif;
+    background-color: #f3eeea;
+    color: #1a1a1a;
+    overflow-x: hidden;
+    padding: 0;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .box {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* canh giữa theo chiều dọc */
+    align-items: center;     /* canh giữa theo chiều ngang nếu cần */
+  }
+  
+  .top-nav {
+    display: flex;
+    position: absolute;
+    top: 0;
+    width: 92%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 60px;
+  }
+
+  .nav-left a {
+    display: inline-block;   /* shrink to word length */
+    padding: 10px 15px;
+    color: #2f4156;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  /* underline effect */
+  .nav-left a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1%; /* sits right under the text */
+    width: 0;
+    height: 2px;
+    background: #2f4156;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-left a:hover::after {
+    width: 100%; /* underline only spans the word */
+  }
+  
+  .nav-left a {
+    margin-right: 25px;
+    text-decoration: none;
+    color: #ff6f61;
+    font-size: 1.5rem;
+  }
+  
+  .nav-right {
+    text-align: right;
+    font-size: 1rem;
+    color: #2f4156;
+    right:0;
+  }
+  
+  .title-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .portfolio-title {
+    font-size: 9rem;
+    color: #2f4156;
+    transform: rotate(-5deg);
+    margin: 0;
+    letter-spacing: 3px;
+  }
+  
+  .main-image {
+    position: absolute;
+    bottom: 0;
+    left: 47%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 90vw;
+    z-index: -1;
+  }
+
+/* About Section Container */
+.about-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 90%;
+    max-width: 1300px;
+    gap: 50px;
+    flex-wrap: wrap; /* responsive khi nhỏ màn hình */
+  }
+  
+  /* Profile Image Styling */
+  .info-image {
+    position: absolute;
+    width: 28%;
+    border-radius: 16px;
+    transform: rotate(-5deg);
+    left:0;
+    bottom:0;
+    margin-bottom: 2%;
+    margin-left: 4%;
+}
+
+  .info-title{
+      position: relative;
+      width:100%;
+      left:0;
+      margin-bottom: 30px;
+  }
+  
+  /* Text Container */
+  .info-text-container {
+    position: absolute;
+    width: 50%;
+    color: #2f4156;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.7px;
+    font-size: 20px;
+    right: 0;
+    top:0;
+    margin-top: 5%;
+    margin-right: 15%;
+  }
+  .info-text-container p {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 18px;
+    color: #2f4156;
+    text-align: justify;
+  }
+  
+  #hello {
+    margin-bottom: 0px;
+  }
+
+  /* Gạch ngang */
+  .info-text-container hr {
+    margin-top: 30px;
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    border: none;
+  }
+
+  .journey-images-1{
+    z-index: 1;
+    position: absolute;
+    width:calc(100vh + 50px);
+    height: 220px;
+    transform: rotate(77deg);
+    left: -250px;
+}
+  .journey-img1{
+    position: absolute;
+    animation-name: scrolldown;
+    animation-duration: 24s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    right: calc(462px *3.5);
+    height: 100%;
+  }
+
+  .journey {
+    position: absolute;
+    width: 65%;
+    top: 0;
+    right: 0;
+    margin-top: 15%;
+    display: inline-block;
+    overflow: hidden; /* shimmer stays inside image box */
+  }
+  
+  /* Smooth scale */
+  .journey img {
+    display: block;
+    width: 100%;
+    transition: transform 0.4s ease;
+  }
+  
+  .journey:hover img {
+    transform: scale(1.05);
+  }
+  
+  /* Shimmer overlay */
+  .journey::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%; /* start outside */
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(243, 238, 234, 0.6) 50%,
+      transparent 100%
+    );
+    transform: skewX(-20deg);
+    pointer-events: none;
+  
+    /* ✨ key trick: only show shimmer where the image is opaque */
+    mix-blend-mode: lighten;
+    opacity: 0; /* hidden until hover */
+  }
+  
+  .journey:hover::after {
+    opacity: 1;
+    animation: swipe 1.2s linear infinite; /* loop forever */
+  }
+  
+  @keyframes swipe {
+    from {
+      left: -75%;
+    }
+    to {
+      left: 125%;
+    }
+  }
+  
+
+  @keyframes scrolldown {
+    to{
+      right: -500px;
+    }
+  }
+
+  #left1 {
+    animation-delay: calc((24s / 6) * (6 - 1.5) * -1); /* 0s */
+  }
+  
+  #left2 {
+    animation-delay: calc((24s / 6) * (6 - 2.5) * -1); /* -1.66s */
+  }
+  
+  #left3 {
+    animation-delay: calc((24s / 6) * (6 - 3.5) * -1); /* -3.33s */
+  }
+  
+  #left4 {
+    animation-delay: calc((24s / 6) * (6 - 4.5) * -1); /* -5s */
+  }
+  
+  #left5 {
+    animation-delay: calc((24s / 6) * (6 - 5.5) * -1); /* -6.66s */
+  }
+  
+  #left6 {
+    animation-delay: calc((24s / 6) * (6 - 6.5) * -1); /* -8.33s */
+  }
+  
+
+  .journey-images-2{
+    z-index: 1;
+    position: absolute;
+    width:calc(100vh + 50px);
+    height: 220px;
+    transform: rotate(77deg);
+    left: 0;
+  }
+
+  .journey-img2{
+    position: absolute;
+    animation-name: scrollup;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    left: calc(462px *3.5);
+    height: 100%;
+  }
+
+  @keyframes scrollup {
+    to{
+      left: -500px;
+    }
+  }
+
+  #right1 {
+    animation-delay: calc((30s / 6) * (6 - 1.5) * -1); /* 0s */
+  }
+  
+  #right2 {
+    animation-delay: calc((30s / 6) * (6 - 2.5) * -1); /* -1.66s */
+  }
+  
+  #right3 {
+    animation-delay: calc((30s / 6) * (6 - 3.5) * -1); /* -3.33s */
+  }
+  
+  #right4 {
+    animation-delay: calc((30s / 6) * (6 - 4.5) * -1); /* -5s */
+  }
+  
+  #right5 {
+    animation-delay: calc((30s / 6) * (6 - 5.5) * -1); /* -6.66s */
+  }
+  
+  #right6 {
+    animation-delay: calc((30s / 6) * (6 - 6.5) * -1); /* -8.33s */
+  }
+  
